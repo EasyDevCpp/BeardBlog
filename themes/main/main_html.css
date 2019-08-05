@@ -1,0 +1,37 @@
+:root {
+	--primary-color: rgb(219, 87, 5); 
+	--btn-hover-color: rgb(5, 87, 219);
+}
+
+a {
+	color: var(--primary-color);
+	transition: .2s all;
+}
+
+a:hover {
+	color: var(--btn-hover-color);
+	text-decoration: none;
+	transition: .2s all;
+}
+
+input[type=text],
+input[type=email],
+input[type=password],
+textarea {
+    padding: 7px 12px 7px 12px !important;
+    background-color: #2b2b2b !important;
+    border: 1px solid var(--primary-color) !important;
+    border-radius: 0px !important;
+    color: rgba(255,255,255,0.57) !important;
+}
+
+input:focus,
+textarea:focus {
+	outline: none !important;
+	border: 1px solid var(--btn-hover-color) !important;
+}
+
+textarea {
+    resize: none;
+}
+
