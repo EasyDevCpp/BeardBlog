@@ -36,7 +36,7 @@ function MediaScreen() {
 
             if(file_exists('../'.$target_file)) $uploadOk = 0;
             
-            if($_FILES['file']['size'] > 500000) $uploadOk = 0;
+            if($_FILES['file']['size'] > 1000000) $uploadOk = 0;
             
             if($imageFileType != 'jpg' && $imageFileType != 'png' && $imageFileType != 'jpeg' && $imageFileType != 'gif') {
                 $uploadOk = 0;
@@ -61,7 +61,7 @@ function MediaScreen() {
         }
         div('p-5');
             div('dash-box p-5 shadow');
-                draw_button('<i class="fas fa-chevron-left"></i> Back', HTML_ReplaceLinkPart('&action='),'btn-big btn-blue shadow-sm');
+                draw_button('<i class="fas fa-chevron-left"></i> Back', HTML_ReplaceLinkPart('&action='), 'btn-big btn-blue shadow-sm');
                 div_row('pt-4 pb-5');
                     div_col(50);
                         if(isset($_GET['id']) && $_GET['action'] == 'edit') {
