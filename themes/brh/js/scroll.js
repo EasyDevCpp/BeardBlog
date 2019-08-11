@@ -123,6 +123,7 @@ function our_work(page) {
 }
 
 // Our Team
+/*
 var ot_opacity = 1.0;
 var ot_fade_state = 0;
 var ot_fade_done = false;
@@ -248,3 +249,4 @@ function our_team(page) {
         ot_fade_done = false;
     }
 }
+*/
