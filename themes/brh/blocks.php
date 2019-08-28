@@ -32,7 +32,7 @@ function Block_1($block = '', $show = false) {
     ?>
         <section class="full-page-cover" id="top">
             <div class="full-page-video">
-                <video autoplay muted loop class="full-page-video">
+                <video autoplay muted loop>
                     <source src="themes/brh/media/video.mov" type="video/mp4">
                     Your browser does not support HTML5 video.
                 </video>
