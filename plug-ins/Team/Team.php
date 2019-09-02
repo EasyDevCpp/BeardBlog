@@ -53,7 +53,7 @@ function Team() {
                             $temp .= '<img src="'.get_img($row_human['media_id']).'" height="240" width="240" class="img-rounded shadow-lg" />';
                             $temp .= '<div class="text-align-start">';
                             $temp .= '<p><strong>Name:</strong> '.$row_human['name'].'<br/>';
-                            $temp .= '<strong>Prüfungen:</strong> * '.$row_human['exams'].'<br/>';
+                            $temp .= '<strong>Prüfungen:</strong> '.$row_human['exams'].'<br/>';
                             if(!empty($row_head['function'])) {
                                 $temp .= '<strong>Funktionen:</strong> '.$row_head['function'].'<br/><i>'.$row_human['functions'].'</i>';
                                 if($invert[$color_index[$i]]) {
