@@ -7,16 +7,19 @@
 */
 
 function Theme_Header() {
-?>
-    <nav>
-        <ul class="side-nav z-2">
-            <li><a class="nav-elements" href="#top"></a></li>
-            <li><a class="nav-elements" href="#what-we-do"></a></li>
-            <li><a class="nav-elements" href="#our-team"></a></li>
-            <li><a class="nav-elements" href="#contact"></a></li>
-        </ul>
-    </nav>
-<?php
+    if(isset($_GET['page']) && $_GET['page'] != 1) {
+        ?>
+        <header>
+            <img src="themes/brh/media/logo.png" alt="BRH Rettungshundestaffel Hessen West" width="120px">
+            <p>
+                <a href="?page=1" class="btn btn-dark btn-longtext"><i class="fas fa-chevron-left"></i> Zurüch zur Startseite</a>
+            </p>
+        </header>
+        <?php
+    } else {
+        ?>
+        <nav></nav>
+        <?php
+    }
 }
-
 ?>

@@ -44,7 +44,7 @@ if(is_numeric($page_id)) {
     } else {
         $page = $sql->fetch_row('bb_page', $page_id);
 
-        if(empty($page['name'])) {
+        if(empty($page['title'])) {
             $page['title'] = PRE_TITLE_ERROR;
             $page_id = 404;
         }

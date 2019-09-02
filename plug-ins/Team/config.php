@@ -19,9 +19,11 @@ function Team_Config() {
 
                         if(isset($_GET['do']) && $_GET['do'] == 'edit' && isset($_GET['elem_id'])) {
                             if(isset($_GET['submit'])) {
-                                if($choose_profile_image2->pick_id != -1 && !empty($_POST['name'])) {
+                                if($choose_profile_image2->pick_id != -1 && !empty($_POST['name']) && !empty($_POST['exams']) && !empty($_POST['functions'])) {
                                     $sql->update('_team_humans', $_GET['elem_id'], 'name', $_POST['name']);
                                     $sql->update('_team_humans', $_GET['elem_id'], 'media_id', $choose_profile_image2->pick_id);
+                                    $sql->update('_team_humans', $_GET['elem_id'], 'exams', $_POST['exams']);
+                                    $sql->update('_team_humans', $_GET['elem_id'], 'functions', $_POST['functions']);
                                     $choose_profile_image2->reset();
 
                                     echo '<meta http-equiv="refresh" content="0; URL='.HTML_ReplaceLinkPart('&do=').'">';
@@ -37,12 +39,14 @@ function Team_Config() {
                             $choose_profile_image2->set_default_pick($row['media_id']);
                             $choose_profile_image2->draw_choose_button('Profilbild auswählen', 'Profilbild ausgewählt');
                             echo '<p class="pt-3">Vollständiger Name: <input type="text" name="name" value="'.$row['name'].'"/></p>';
+                            echo '<p class="pt-3">Prüfungen: <input type="text" name="exams" value="'.$row['exams'].'"/></p>';
+                            echo '<p class="pt-3">Funktionen (<strong>nicht Vorstands bezogen)</strong>: <input type="text" name="functions" value="'.$row['functions'].'"/></p>';
                             echo '</form>';
                             echo '<p class="pt-5 pb-2"><a href="#" onclick="document.getElementById(\'data\').submit();" class="btn btn-big btn-blue shadow-sm">Bearbeiten</a></p>';
                         } else if(!isset($_GET['do']) || (isset($_GET['do']) && $_GET['do'] == 'delete')) {
                             if(isset($_GET['submit'])) {
-                                if($choose_profile_image->pick_id != -1 && !empty($_POST['name'])) {
-                                    $sql->insert('_team_humans', 'id, name, media_id', 'NULL, "'.$_POST['name'].'", '.$choose_profile_image->pick_id);
+                                if($choose_profile_image->pick_id != -1 && !empty($_POST['name']) && !empty($_POST['exams']) && !empty($_POST['functions'])) {
+                                    $sql->insert('_team_humans', 'id, name, media_id, exams, functions', 'NULL, "'.$_POST['name'].'", '.$choose_profile_image->pick_id.', "'.$_POST['exams'].'", "'.$_POST['functions'].'"');
                                     $choose_profile_image->reset();
 
                                     echo '<meta http-equiv="refresh" content="0; URL='.HTML_ReplaceLinkPart('&submit=').'">';
@@ -63,6 +67,8 @@ function Team_Config() {
                             echo '<form action="'.HTML_ReplaceLinkPart('&submit=').'&submit=true" method="POST" id="data">';
                             $choose_profile_image->draw_choose_button('Profilbild auswählen', 'Profilbild ausgewählt');
                             echo '<p class="pt-3">Vollständiger Name: <input type="text" name="name" /></p>';
+                            echo '<p class="pt-3">Prüfungen: <input type="text" name="exams" /></p>';
+                            echo '<p class="pt-3">Funktionen (<strong>nicht Vorstands bezogen)</strong>: <input type="text" name="functions" /></p>';
                             echo '</form>';
                             echo '<p class="pt-5 pb-2"><a href="#" onclick="document.getElementById(\'data\').submit();" class="btn btn-big btn-blue shadow-sm">Hinzufügen</a></p>';
                             draw_text('Liste:', 3, 'pt-3');
@@ -102,9 +108,11 @@ function Team_Config() {
 
                         if(isset($_GET['do']) && $_GET['do'] == 'edit' && isset($_GET['elem_id'])) {
                             if(isset($_GET['submit'])) {
-                                if($choose_profile_image2->pick_id != -1 && !empty($_POST['dog_name'])) {
+                                if($choose_profile_image2->pick_id != -1 && !empty($_POST['dog_name']) && !empty($_POST['breed']) && !empty($_POST['birth'])) {
                                     $sql->update('_team_dogs', $_GET['elem_id'], 'name', $_POST['dog_name']);
                                     $sql->update('_team_dogs', $_GET['elem_id'], 'media_id', $choose_profile_image2->pick_id);
+                                    $sql->update('_team_dogs', $_GET['elem_id'], 'breed', $_POST['breed']);
+                                    $sql->update('_team_dogs', $_GET['elem_id'], 'year_of_birth', $_POST['birth']);
                                     $choose_profile_image2->reset();
 
                                     echo '<meta http-equiv="refresh" content="0; URL='.HTML_ReplaceLinkPart('&do=').'">';
@@ -119,13 +127,15 @@ function Team_Config() {
                             $choose_profile_image2->set_default_pick($row['media_id']);
                             $choose_profile_image2->draw_choose_button('Profilbild auswählen', 'Profilbild ausgewählt');
                             echo '<p class="pt-3">Name des Hundes: <input type="text" name="dog_name" value="'.$row['name'].'"/></p>';
+                            echo '<p class="pt-3">Hunderasse: <input type="text" name="breed" value="'.$row['breed'].'"/></p>';
+                            echo '<p class="pt-3">Jahr der Geburt: <input type="number" name="birth" value="'.$row['year_of_birth'].'"/></p>';
                             echo '</form>';
                             echo '<p class="pt-5 pb-2"><a href="#" onclick="document.getElementById(\'data\').submit();" class="btn btn-big btn-blue shadow-sm">Bearbeiten</a></p>';
                         } else if(!isset($_GET['do']) || (isset($_GET['do']) && $_GET['do'] == 'delete')) {
                             if(isset($_GET['submit'])) {
-                                if($choose_profile_image->pick_id != -1 && !empty($_POST['name']) && !empty($_POST['dog_name'])) {
+                                if($choose_profile_image->pick_id != -1 && !empty($_POST['name']) && !empty($_POST['dog_name']) && !empty($_POST['breed']) && !empty($_POST['birth'])) {
                                     $row = $sql->fetch_row_by_param('_team_humans', 'name', $_POST['name']);
-                                    $sql->insert('_team_dogs', 'id, name, human_id, media_id', 'NULL, "'.$_POST['dog_name'].'", '.$row['id'].', '.$choose_profile_image->pick_id);
+                                    $sql->insert('_team_dogs', 'id, name, media_id, breed, year_of_birth, human_id', 'NULL, "'.$_POST['dog_name'].'", '.$choose_profile_image->pick_id.', "'.$_POST['breed'].'", '.$_POST['birth'].', '.$row['id']);
                                     $choose_profile_image->reset();
 
                                     echo '<meta http-equiv="refresh" content="0; URL='.HTML_ReplaceLinkPart('&submit=').'">';
@@ -140,6 +150,8 @@ function Team_Config() {
                             $choose_profile_image->draw_choose_button('Profilbild auswählen', 'Profilbild ausgewählt');
                             echo '<p class="pt-3">Vollständiger Name des Besitzers: <input type="text" name="name" /></p>';
                             echo '<p class="pt-3">Name des Hundes: <input type="text" name="dog_name" /></p>';
+                            echo '<p class="pt-3">Hunderasse: <input type="text" name="breed" /></p>';
+                            echo '<p class="pt-3">Jahr der Geburt: <input type="number" name="birth" /></p>';
                             echo '</form>';
                             echo '<p class="pt-5 pb-2"><a href="#" onclick="document.getElementById(\'data\').submit();" class="btn btn-big btn-blue shadow-sm">Hinzufügen</a></p>';
                             draw_text('Liste:', 3, 'pt-3');
@@ -179,6 +191,7 @@ function Team_Config() {
                             if(isset($_GET['submit'])) {
                                 $sql->update('_team_head', $_GET['elem_id'], 'email', $_POST['email']);
                                 $sql->update('_team_head', $_GET['elem_id'], 'phone', $_POST['phone']);
+                                $sql->update('_team_head', $_GET['elem_id'], 'function', $_POST['function']);
 
                                 echo '<meta http-equiv="refresh" content="0; URL='.HTML_ReplaceLinkPart('&do=').'">';
                             }
@@ -189,13 +202,14 @@ function Team_Config() {
                             echo '<form action="'.HTML_ReplaceLinkPart('&submit=').'&submit=true" method="POST" id="data">';
                             echo '<p class="pt-3">E-Mail: <input type="email" name="email" value="'.$row['email'].'"/></p>';
                             echo '<p class="pt-3">Telefon: <input type="text" name="phone" value="'.$row['phone'].'"/></p>';
+                            echo '<p class="pt-3">Funktion: <input type="text" name="function" value="'.$row['function'].'"/></p>';
                             echo '</form>';
                             echo '<p class="pt-5 pb-2"><a href="#" onclick="document.getElementById(\'data\').submit();" class="btn btn-big btn-blue shadow-sm">Bearbeiten</a></p>';
                         } else if(!isset($_GET['do']) || (isset($_GET['do']) && $_GET['do'] == 'delete')) {
                             if(isset($_GET['submit'])) {
-                                if(!empty($_POST['name'])) {
+                                if(!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['function'])) {
                                     $row = $sql->fetch_row_by_param('_team_humans', 'name', $_POST['name']);
-                                    $sql->insert('_team_head', 'id, human_id, email, phone', 'NULL, '.$row['id'].', "'.$_POST['email'].'", "'.$_POST['phone'].'"');
+                                    $sql->insert('_team_head', 'id, human_id, email, phone, function', 'NULL, '.$row['id'].', "'.$_POST['email'].'", "'.$_POST['phone'].'", "'.$_POST['function'].'"');
 
                                     echo '<meta http-equiv="refresh" content="0; URL='.HTML_ReplaceLinkPart('&submit=').'">';
                                 }
@@ -209,6 +223,7 @@ function Team_Config() {
                             echo '<p class="pt-3">Vollständiger Name des Mitglieds: <input type="text" name="name" /></p>';
                             echo '<p class="pt-3">E-Mail: <input type="email" name="email" /></p>';
                             echo '<p class="pt-3">Telefon: <input type="text" name="phone" /></p>';
+                            echo '<p class="pt-3">Funktion: <input type="text" name="function" /></p>';
                             echo '</form>';
                             echo '<p class="pt-5 pb-2"><a href="#" onclick="document.getElementById(\'data\').submit();" class="btn btn-big btn-blue shadow-sm">Hinzufügen</a></p>';
                             draw_text('Liste:', 3, 'pt-3');
@@ -253,25 +268,30 @@ function Team_Config() {
                 draw_text('Installation...', 2);
 
                 /*
-                    * _team_humans    id | name       | media_id
-                    * _team_dogs      id | name       | human_id  | media_id
-                    * _team_head      id | human_id   | email     | phone
+                    * _team_humans      id | name | media_id | exams | functions
+                    * _team_dogs        id | name | media_id | breed | year_of_birth | human_id
+                    * _team_head        id | human_id | email | phone | function
                 */
                 $sql->create_table('_team_humans',  'id INT NOT NULL AUTO_INCREMENT,'.
                                                     'name VARCHAR(60) NOT NULL,'.
                                                     'media_id INT DEFAULT NULL,'.
+                                                    'exams TEXT NOT NULL,'.
+                                                    'functions TEXT DEFAULT NULL,'.
                                                     'PRIMARY KEY (id)');
 
                 $sql->create_table('_team_dogs',    'id INT NOT NULL AUTO_INCREMENT,'.
                                                     'name VARCHAR(60) NOT NULL,'.
-                                                    'human_id INT NOT NULL,'.
                                                     'media_id INT DEFAULT NULL,'.
+                                                    'breed VARCHAR(60) NOT NULL,'.
+                                                    'year_of_birth INT NOT NULL,'.
+                                                    'human_id INT NOT NULL,'.
                                                     'PRIMARY KEY (id)');
 
                 $sql->create_table('_team_head',    'id INT NOT NULL AUTO_INCREMENT,'.
                                                     'human_id INT NOT NULL,'.
                                                     'email VARCHAR(30) NOT NULL,'.
                                                     'phone VARCHAR(20) DEFAULT NULL,'.
+                                                    'function TEXT NOT NULL,'.
                                                     'PRIMARY KEY (id)');
 
                 draw_text('Done.', 2);

@@ -39,13 +39,13 @@ function Block_1($block = '', $show = false) {
             </div>
             <div class="center-content-25-left z-2">
                 <?php
-                echo '<p class="logo-addition"><img src="'.get_img(get_attribute($block, $base, 'Logo')->values[0]).'" alt="'.get_attribute($block, $base, 'Logo')->values[1].'" height="54" width="54" />'.get_attribute($block, $base, 'Logo Text')->values[0].'</p>';
+                echo '<p class="logo-addition"><img src="'.get_img(get_attribute($block, $base, 'Logo')->values[0]).'" alt="'.get_attribute($block, $base, 'Logo')->values[1].'" height="90" width="90" />'.get_attribute($block, $base, 'Logo Text')->values[0].'</p>';
                 echo '<h1>'.get_attribute($block, $base, 'Überschrift')->values[0].'</h1>';
                 echo '<p>'.stripslashes(get_attribute($block, $base, 'Beschreibung')->values[0]).'</p>';
                 ?>
                 <br/>
                 <?php
-                echo '<a href="'.get_attribute($block, $base, 'Weiterlesen Link')->values[1].'" class="btn btn-uppercase shadow">'.get_attribute($block, $base, 'Weiterlesen Link')->values[0].'</a>';
+                echo '<a href="'.get_attribute($block, $base, 'Weiterlesen Link')->values[1].'" class="btn shadow">'.get_attribute($block, $base, 'Weiterlesen Link')->values[0].' <i class="fas fa-chevron-right"></i></a>';
                 ?>
             </div>
             <div class="overlay z-1"></div>
@@ -63,10 +63,10 @@ function Block_2($block = '', $show = false) {
         return $base;
     } else {
     ?>
-        <section class="quarter-page bg-dark">
+        <section class="quarter-page our-work-text-grid-purple">
             <div class="center-content">
                 <?php
-                echo '<a href="'.get_attribute($block, $base, 'Video Link')->values[1].'" class="btn btn-big">'.get_attribute($block, $base, 'Video Link')->values[0].'</a>';
+                echo '<a href="'.get_attribute($block, $base, 'Video Link')->values[1].'" class="btn btn-longtext btn-big">'.get_attribute($block, $base, 'Video Link')->values[0].'</a>';
                 ?>
             </div>
         </section>
@@ -85,8 +85,8 @@ function Block_3($block = '', $show = false) {
     } else {
     ?>
         <section class="full-page" id="contact">
-            <div class="black-outline"></div>
-            <div class="content">
+            <!-- <div class="black-outline"></div> -->
+            <div class="content border-top">
                 <h1>Kontaktieren Sie uns.</h1>
                 <div class="grid-2">
                     <div class="col-1">
@@ -131,6 +131,38 @@ function Block_3($block = '', $show = false) {
                                 </div>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    <?php
+    }
+}
+
+function Block_4($block = '', $show = false) {
+    $base = new Block();
+
+    $base->add_attribute('link', array('Jetzt ansehen', '?page=2'), 'Team Link');
+    $base->add_attribute('link', array('Jetzt kontaktieren', '?page=contact'), 'Kontakt Link');
+
+    if(!$show) {
+        return $base;
+    } else {
+    ?>
+        <section class="full-page">
+            <div class="content">
+                <div class="grid-2">
+                    <div class="col-1 pr-4">
+                        <div class="color-tile color-tile-blue">
+                            <h1>Unser Team.<h1>
+                            <?php echo '<p><a href="'.get_attribute($block, $base, 'Team Link')->values[1].'" class="btn">'.get_attribute($block, $base, 'Team Link')->values[0].' <i class="fas fa-chevron-right"></i></a></p>'; ?>
+                        </div>
+                    </div>
+                    <div class="col-2 pl-4">
+                        <div class="color-tile color-tile-dark-gray">
+                            <h1>Kontakt<h1>
+                            <?php echo '<p><a href="'.get_attribute($block, $base, 'Kontakt Link')->values[1].'" class="btn">'.get_attribute($block, $base, 'Kontakt Link')->values[0].' <i class="fas fa-chevron-right"></i></a></p>'; ?>
+                        </div>
                     </div>
                 </div>
             </div>
