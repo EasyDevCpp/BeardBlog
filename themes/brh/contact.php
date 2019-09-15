@@ -12,13 +12,10 @@ function Theme_Contact() {
             <div class="content border-top text-align-center">
                 <h1>Kontaktieren Sie uns.</h1>
                 <div class="grid-2">
-                    <div class="col-1">
-                        <?php
-                        echo '<h2>'.get_attribute($block, $base, 'Überschrift')->values[0].'</h2>';
-                        echo ''.stripslashes(get_attribute($block, $base, 'Infos')->values[0]).'';
-                        ?>
+                    <div class="col-1 p-3 color-tile-ts color-tile-light-gray">
+                        
                     </div>
-                    <div class="col-2 p-3 color-tile-ts color-tile-dark-gray">
+                    <div class="ml-4 col-2 p-3 color-tile-ts color-tile-dark-gray">
                         <h2>Schreiben Sie uns.</h2>
                         <form>
                             <div class="grid-2-auto">

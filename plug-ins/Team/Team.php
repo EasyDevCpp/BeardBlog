@@ -138,13 +138,13 @@ function Team() {
                     <div class="col-1">
                         <div class="color-tile color-tile-blue">
                             <h1>Mitglied werden.</h1>
-                            <a href="" class="btn btn-med">Jetzt Bewerben <i class="fas fa-chevron-right"></i></a>
+                            <h1><a href="" class="btn btn-med">Jetzt Bewerben <i class="fas fa-chevron-right"></i></a></h1>
                         </div>
                     </div>
                     <div class="col-2 pl-4">
                         <div class="color-tile color-tile-dark-gray">
                             <h1><i class="fas fa-hand-holding-usd"></i> Fördern</h1>
-                            <a href="" class="btn btn-red btn-med">Jetzt fördern <i class="fas fa-chevron-right"></i></a>
+                            <h1><a href="" class="btn btn-red btn-med">Jetzt fördern <i class="fas fa-chevron-right"></i></a></h1>
                         </div>
                     </div>
             </div>
