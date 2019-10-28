@@ -57,9 +57,9 @@ function Team() {
                             if(!empty($row_head['function'])) {
                                 $temp .= '<strong>Funktionen:</strong> '.$row_head['function'].'<br/><i>'.$row_human['functions'].'</i>';
                                 if($invert[$color_index[$i]]) {
-                                    $temp .= '<p><a href="" class="btn btn-dark">Schreib Mir</a></p>';
+                                    $temp .= '<p><a href="'.HTML_ReplaceLinkPart('?page=').'?page=contact&sendto='.$row['human_id'].'" class="btn btn-dark">Schreib Mir</a></p>';
                                 } else {
-                                    $temp .= '<p><a href="" class="btn">Schreib Mir</a></p>';
+                                    $temp .= '<p><a href="'.HTML_ReplaceLinkPart('?page=').'?page=contact&sendto='.$row['human_id'].'" class="btn">Schreib Mir</a></p>';
                                 }
                             } else {
                                 $temp .= '<strong>Funktionen:</strong> <i>'.$row_human['functions'].'</i>';
@@ -134,19 +134,20 @@ function Team() {
                 </div>
             </div>
             <div class="mt-5">
-                <div class="grid-2">
+                <div class="grid-2 grid-column-gap">
                     <div class="col-1">
                         <div class="color-tile color-tile-blue">
                             <h1>Mitglied werden.</h1>
                             <h1><a href="" class="btn btn-med">Jetzt Bewerben <i class="fas fa-chevron-right"></i></a></h1>
                         </div>
                     </div>
-                    <div class="col-2 pl-4">
+                    <div class="col-2">
                         <div class="color-tile color-tile-dark-gray">
                             <h1><i class="fas fa-hand-holding-usd"></i> Fördern</h1>
                             <h1><a href="" class="btn btn-red btn-med">Jetzt fördern <i class="fas fa-chevron-right"></i></a></h1>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </section>

@@ -151,14 +151,14 @@ function Block_4($block = '', $show = false) {
     ?>
         <section class="full-page">
             <div class="content">
-                <div class="grid-2">
-                    <div class="col-1 pr-4">
+                <div class="grid-2 grid-column-gap">
+                    <div class="col-1">
                         <div class="color-tile color-tile-blue">
                             <h1>Unser Team.</h1>
                             <?php echo '<h1><p><a href="'.get_attribute($block, $base, 'Team Link')->values[1].'" class="btn">'.get_attribute($block, $base, 'Team Link')->values[0].' <i class="fas fa-chevron-right"></i></a></p></h1>'; ?>
                         </div>
                     </div>
-                    <div class="col-2 pl-4">
+                    <div class="col-2">
                         <div class="color-tile color-tile-dark-gray">
                             <h1>Kontakt</h1>
                             <?php echo '<h1><p><a href="'.get_attribute($block, $base, 'Kontakt Link')->values[1].'" class="btn">'.get_attribute($block, $base, 'Kontakt Link')->values[0].' <i class="fas fa-chevron-right"></i></a></p></h1>'; ?>
