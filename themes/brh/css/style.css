@@ -59,6 +59,10 @@ textarea {
     border-radius: 3px;
 }
 
+::placeholder {
+    color: rgb(157, 178, 195);
+}
+
 footer {
     padding: 15px 45px;
     /*background-color: #000;*/
